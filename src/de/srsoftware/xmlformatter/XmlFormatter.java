@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Vector;
 
+import de.srsoftware.tools.translations.Translations;
+
 public class XmlFormatter {
 
 	public static String loadDocument(URL url) throws IOException {		
@@ -78,6 +80,10 @@ public class XmlFormatter {
 		}
 
 	}
+	
+	private static String _(String text) { 
+		return Translations.get(text);
+	}
 
 	/**
 	 * @param args
@@ -89,7 +95,7 @@ public class XmlFormatter {
 			Vector<String> docLines = parseDocument(doc);
 			docLines = formatDocument(docLines, 2);
 			writeDocument(docLines,"/home/srichter/eclipse/SBWTools/webTools/data/example network.xml");
-			System.out.println("done.");
+			System.out.println(_("done."));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
