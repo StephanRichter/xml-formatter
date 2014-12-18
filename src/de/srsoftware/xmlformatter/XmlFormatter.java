@@ -27,9 +27,9 @@ public class XmlFormatter {
 	public static String loadDocument(URL url) throws IOException {		
 		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
 		StringBuffer resultBuffer = new StringBuffer();
-		while (br.ready()){
-		  while (br.ready()) resultBuffer.append(br.readLine()+"\n");
-		  try {	Thread.sleep(1000);	} catch (InterruptedException e) { e.printStackTrace();	}
+		String line;
+		while ((line = br.readLine())!=null){
+		  resultBuffer.append(line+"\n");
 		}		
 		return resultBuffer.toString();
 	}
